@@ -16,7 +16,7 @@ namespace TestRender.Controllers
             try
             {
                 var data = await context.Categories
-                    .Select(x => new CategoryDTO.CategoryDTO(x.Id, x.Name))
+                    .Select(x => new CategoryDTO.CategoryDataDTO(x.Id, x.Name))
                     .ToListAsync();
 
                 return Ok(data);
@@ -32,7 +32,7 @@ namespace TestRender.Controllers
             try
             {
                 var data = await context.Categories
-                    .Select(x => new CategoryDTO.CategoryDTO(x.Id, x.Name))
+                    .Select(x => new CategoryDTO.CategoryDataDTO(x.Id, x.Name))
                     .FirstOrDefaultAsync(x => x.Id.Equals(id));
 
                 return Ok(data);
@@ -54,7 +54,7 @@ namespace TestRender.Controllers
                 await context.Categories.AddAsync(category);
                 await context.SaveChangesAsync();
 
-                var result = new CategoryDTO.CategoryDTO(category.Id, category.Name);
+                var result = new CategoryDTO.CategoryDataDTO(category.Id, category.Name);
 
                 return Ok(result);
             }
@@ -73,7 +73,7 @@ namespace TestRender.Controllers
 
                 await context.SaveChangesAsync();
 
-                var result = new CategoryDTO.CategoryDTO(category.Id, category.Name);
+                var result = new CategoryDTO.CategoryDataDTO(category.Id, category.Name);
 
                 return Ok(result);
             }
