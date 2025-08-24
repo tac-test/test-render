@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace TestRender.Models.DTO;
+﻿namespace TestRender.Models.DTO;
 
 public static class ProductDTO
 {

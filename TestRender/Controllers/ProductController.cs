@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
-using StackExchange.Redis;
 using System.Text.Json;
-using System.Threading;
 using TestRender.Data;
 using TestRender.Models.DTO;
 using TestRender.Models.Entities;
@@ -38,7 +36,7 @@ namespace TestRender.Controllers
             try
             {
                 var data = await context.Products
-                    .Select(x => new ProductDTO.ProductDataDTO(x.Id, x.Name , x.Description , x.Price , x.CategoryId))
+                    .Select(x => new ProductDTO.ProductDataDTO(x.Id, x.Name, x.Description, x.Price, x.CategoryId))
                     .ToListAsync(cancellationToken);
 
                 await cache.SetStringAsync(REDIS_KEY, JsonSerializer.Serialize(data), cancellationToken);

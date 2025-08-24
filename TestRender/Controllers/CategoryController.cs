@@ -11,7 +11,7 @@ namespace TestRender.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController(
-            MainDbContext context, 
+            MainDbContext context,
             IDistributedCache cache
         ) : ControllerBase
     {
